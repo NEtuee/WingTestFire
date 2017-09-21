@@ -140,8 +140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -453, y: 285}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -811.75, y: 420.3}
+  m_SizeDelta: {x: 296.5, y: 72.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136980417
 MonoBehaviour:
@@ -164,11 +164,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -192,7 +192,9 @@ GameObject:
   - component: {fileID: 339289054}
   - component: {fileID: 339289052}
   - component: {fileID: 339289055}
-  m_Layer: 0
+  - component: {fileID: 339289053}
+  - component: {fileID: 339289056}
+  m_Layer: 8
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +304,23 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.01
   m_Autodestruct: 0
+--- !u!68 &339289053
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339289051}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.06, y: -0.21500003}
+  - {x: 0.5, y: -0.21500003}
 --- !u!4 &339289054
 Transform:
   m_ObjectHideFlags: 0
@@ -326,8 +345,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6607cd02904f8cf4c912812f4ca51d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 0
+  isMoving: 0
   text: {fileID: 136980417}
+--- !u!50 &339289056
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339289051}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1008541182
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,10 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -502,6 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578902153}
   - component: {fileID: 1578902152}
+  - component: {fileID: 1578902154}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -522,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 339289055}
   player: {fileID: 1520357823}
+  text: {fileID: 136980417}
 --- !u!4 &1578902153
 Transform:
   m_ObjectHideFlags: 0
@@ -535,6 +576,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578902154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578902151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5600e5b34c4723498cccc823c414cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1721541261
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +597,7 @@ GameObject:
   - component: {fileID: 1721541264}
   - component: {fileID: 1721541263}
   - component: {fileID: 1721541262}
+  - component: {fileID: 1721541265}
   m_Layer: 0
   m_Name: CollTest
   m_TagString: Untagged
@@ -632,6 +685,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721541265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721541261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3cfe6bf18e5f640ac09eb581d069e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1727935413
 GameObject:
   m_ObjectHideFlags: 0

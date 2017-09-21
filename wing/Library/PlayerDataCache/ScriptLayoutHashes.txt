@@ -1,4 +1,6 @@
 Android
+2da93d5b64c8fe2fe0fb086632dc83cd Assembly-CSharp.dll:.InputManager
+8934d592c24f471a85e3ad740ce39f92 Assembly-CSharp.dll:.PlayerAttack
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
@@ -129,5 +131,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
-a700aeb9f0ff220b2b57d7c77d547b8b Assembly-CSharp.dll:.PlayerAttack
-b6f4d33749ecfc6290b6b72916f5ec2a Assembly-CSharp.dll:.InputManager
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TestBox
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FpsCounter
