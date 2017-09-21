@@ -16,9 +16,12 @@ public class PlayerAttack : MonoBehaviour {
 	RaycastHit2D ray;
 	EdgeCollider2D col;
 
+	AttackScript atk;
+
 	void Start()
 	{
 		col = GetComponent<EdgeCollider2D>();
+		atk = GetComponent<AttackScript>();
 		prevPos = transform.position;
 		formerPos = transform.position;
 	}
@@ -42,17 +45,22 @@ public class PlayerAttack : MonoBehaviour {
 			// 	else
 			// 		ray.collider.GetComponent<SpriteRenderer>().color = Color.black;
 			// }
+			//===================
 			isMoving = true;
+			atk.safeMode = false;
 			Vector2 [] points = {(formerPos - one),(prevPos - one),new Vector2(0,0)};
 
 			col.points = points;
+			//====================
 		}
 		else if(isMoving)
 		{
 			// Vector2 [] v = {prevPos,new Vector2()};
 			// col.points = v;
+			atk.safeMode = true;
 			isMoving = false;
 		}
+
 		formerPos = prevPos;
 		prevPos = currentPos;
 	}

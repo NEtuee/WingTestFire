@@ -18,9 +18,14 @@ public class InputManager : MonoBehaviour {
 	Vector2 playerOrigin;
 	Vector2 touchOrigin;
 
+	void Start()
+	{
+		atkTouch.fingerId = -1;
+		movementTouch.fingerId = -1;
+	}
 
 	void Update () {
-		if(Input.touchCount > 0)
+		if(Input.touchCount > 0 && !GameManager.instance.player.isDead)
 		{
 			for(int i = 0; i < Input.touchCount; ++i)
 			{
@@ -38,7 +43,6 @@ public class InputManager : MonoBehaviour {
 					}
 					else
 					{
-						
 						movementTouch = Input.GetTouch(i);
 						playerOrigin = player.transform.position;
 				 		touchOrigin = Camera.main.ScreenToWorldPoint(touchs.position);
