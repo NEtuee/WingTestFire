@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour {
 	public HpScript player;
 	public bool playerDead = false;
 
+	public float progress = 0;
+
 	public int enemyCount = 0;
 	public int score = 0;
 
 	void Awake()
 	{
 		instance = this;
+		//DontDestroyOnLoad(gameObject);
 	}
 
 	void Start()
@@ -42,8 +45,4 @@ public class GameManager : MonoBehaviour {
 		Instantiate(enemy,new Vector3(4.3f, 0,0),Quaternion.identity);
 	}
 
-	public void LoadScene()
-	{
-		SceneManager.LoadScene(0);
-	}
 }
