@@ -51,21 +51,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharacterInfo.cs" />
-     <Compile Include="Assets\ChracterSelection.cs" />
-     <Compile Include="Assets\GetLoadManager.cs" />
-     <Compile Include="Assets\InfoUpdate.cs" />
-     <Compile Include="Assets\LoadManager.cs" />
-     <Compile Include="Assets\Sprite\AttackScript.cs" />
-     <Compile Include="Assets\Sprite\BulletScript.cs" />
-     <Compile Include="Assets\Sprite\EnemyScript.cs" />
-     <Compile Include="Assets\Sprite\FpsCounter.cs" />
-     <Compile Include="Assets\Sprite\GameManager.cs" />
-     <Compile Include="Assets\Sprite\HpScript.cs" />
-     <Compile Include="Assets\Sprite\InputManager.cs" />
-     <Compile Include="Assets\Sprite\PlayerAttack.cs" />
-     <Compile Include="Assets\Sprite\TestBox.cs" />
-     <Compile Include="Assets\Sprite\UiManager.cs" />
+     <Compile Include="Assets\Script\AttackScript.cs" />
+     <Compile Include="Assets\Script\BulletScript.cs" />
+     <Compile Include="Assets\Script\CharacterInfo.cs" />
+     <Compile Include="Assets\Script\ChracterSelection.cs" />
+     <Compile Include="Assets\Script\EnemyScript.cs" />
+     <Compile Include="Assets\Script\FpsCounter.cs" />
+     <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\GetLoadManager.cs" />
+     <Compile Include="Assets\Script\HpScript.cs" />
+     <Compile Include="Assets\Script\InfoUpdate.cs" />
+     <Compile Include="Assets\Script\InputManager.cs" />
+     <Compile Include="Assets\Script\LoadManager.cs" />
+     <Compile Include="Assets\Script\PlayerAttack.cs" />
+     <Compile Include="Assets\Script\TestBox.cs" />
+     <Compile Include="Assets\Script\TouchToMoveScene.cs" />
+     <Compile Include="Assets\Script\UiManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity_2017.1.1f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
