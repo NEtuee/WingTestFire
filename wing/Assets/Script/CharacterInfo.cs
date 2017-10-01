@@ -21,4 +21,15 @@ public class CharacterInfo {
 		image.sprite = inGameImg;
 	}
 	
+	public void Copy(CharacterInfo info)
+	{
+		name = info.name;
+		inGameImg = info.inGameImg;
+		illust = info.illust;
+		maxHp = info.maxHp;
+		explanation = info.explanation;
+
+		image = info.image;
+		isLock = info.isLock;
+	}
 }

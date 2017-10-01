@@ -25,6 +25,10 @@ public class ChracterSelection : MonoBehaviour {
 
 	public float distBybetw = 150f;
 
+	public RectTransform selsave;
+
+	InfoUpdate charInfo;
+
 	List<RectTransform> info = new List<RectTransform>();
 
 	void Start()
@@ -45,7 +49,7 @@ public class ChracterSelection : MonoBehaviour {
 				obj.SetParent(scrollBack.GetComponent<RectTransform>(),false);
 				obj.localPosition = new Vector3(-390 + (count * distBybetw),0,0);
 
-				obj.GetComponent<Image>().sprite = charList[i].inGameImg;
+				obj.GetComponent<SpriteRenderer>().sprite = charList[i].inGameImg;
 				obj.GetComponent<InfoUpdate>().info = charList[i];
 
 				info.Add(obj);
@@ -62,6 +66,14 @@ public class ChracterSelection : MonoBehaviour {
 				firstSpawn = 0;
 			
 		}
+
+		GameObject s = new GameObject();
+		s.AddComponent<InfoUpdate>();
+		charInfo = s.GetComponent<InfoUpdate>();
+		charInfo.info = new CharacterInfo();
+		s.tag = "ChracterInfo";
+
+		DontDestroyOnLoad(s);
 
 		SetNearObj();
 	}
@@ -114,13 +126,14 @@ public class ChracterSelection : MonoBehaviour {
 				continue;
 			}
 
+			info[i].GetComponent<SpriteGlow>().enabled = false;
+
 			if(i == 0)
 			{
 				if(selectRect.position.x > info[i].position.x)
 					check = selectRect.position.x - info[i].position.x;
 				else
 					check = info[i].position.x - selectRect.position.x;
-
 				foo = info[i];
 			}
 			else
@@ -138,15 +151,22 @@ public class ChracterSelection : MonoBehaviour {
 				}
 			}
 		}
-
+		
+		foo.GetComponent<SpriteRenderer>().sortingOrder = 3;
+		foo.GetComponent<SpriteGlow>().enabled = true;
 		return foo;
 	}
 
 	public void SetNearObj()
 	{
 		selected = GetNear();
-		selected.SetAsLastSibling();
+		if(selected == selsave)
+			return;
 		selected.GetComponent<InfoUpdate>().InfoLoad(name,exp);
+
+		charInfo.info.Copy(selected.GetComponent<InfoUpdate>().info);
+
+		selsave = selected;
 	}
 
 	void Update()
@@ -168,16 +188,25 @@ public class ChracterSelection : MonoBehaviour {
 					c = 1;
 
 				pos.y = value / 5;
-				info[i].localScale = new Vector3(1 + value / 1000,1 + value / 1000,1);
-				info[i].GetComponent<Image>().color = new Color(c,c,c,1);
+				info[i].localScale = new Vector3(55 + value / 1000,55 + value / 1000,1);
+				info[i].GetComponent<SpriteRenderer>().color = new Color(c,c,c,1);
+				if(info[i] != selected)
+				{
+					if(height < 200)
+						info[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
+					else
+						info[i].GetComponent<SpriteRenderer>().sortingOrder = 1;
+	
+				}
 			}
 			else
 			{
 				pos.y = 0;
-				info[i].localScale = new Vector3(1,1,1);
-				if(info[i].GetComponent<Image>() == null)
+				info[i].localScale = new Vector3(55,55,1);
+				if(info[i].GetComponent<SpriteRenderer>() == null)
 					Debug.Log("cehck");
-				info[i].GetComponent<Image>().color = new Color(0.1f,0.1f,0.1f,1);
+				info[i].GetComponent<SpriteRenderer>().color = new Color(0.1f,0.1f,0.1f,1);
+				info[i].GetComponent<SpriteRenderer>().sortingOrder = 0;
 			}
 			info[i].localPosition = pos;
 		}
@@ -205,7 +234,7 @@ public class ChracterSelection : MonoBehaviour {
 			else
 				check = selected.position.x - selectRect.position.x;
 
-		if(Mathf.Abs(check) >= 0.1f && Mathf.Abs(scrollRect.velocity.x) < 100)
+		if(Mathf.Abs(check) >= 0.1f && Mathf.Abs(scrollRect.velocity.x) < 100 && !Input.GetMouseButton(0))
 		{
 			scrollRect.velocity = new Vector2(0,0);
 
