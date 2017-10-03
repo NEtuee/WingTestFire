@@ -21,6 +21,7 @@ public class ChracterSelection : MonoBehaviour {
 	public ScrollRect scrollRect;
 
 	public Text name;
+	public Text cls;
 	public Text exp;
 
 	public float distBybetw = 150f;
@@ -28,6 +29,8 @@ public class ChracterSelection : MonoBehaviour {
 	public RectTransform selsave;
 
 	InfoUpdate charInfo;
+
+	RectTransform save;
 
 	List<RectTransform> info = new List<RectTransform>();
 
@@ -41,6 +44,8 @@ public class ChracterSelection : MonoBehaviour {
 		// obj1.localPosition = new Vector3(-390,0,0);
 		// info.Add(obj1);
 
+		charList = GameObject.FindGameObjectWithTag("DataStructure").GetComponent<DataStructure>().charList;
+
 		while(count < 7)
 		{
 			for(int i = 0; i < charList.Count; ++i)
@@ -48,8 +53,9 @@ public class ChracterSelection : MonoBehaviour {
 				RectTransform obj = Instantiate(button).GetComponent<RectTransform>();
 				obj.SetParent(scrollBack.GetComponent<RectTransform>(),false);
 				obj.localPosition = new Vector3(-390 + (count * distBybetw),0,0);
-
-				obj.GetComponent<SpriteRenderer>().sprite = charList[i].inGameImg;
+				
+				obj.GetComponent<Image>().sprite = charList[i].inGameImg;
+//				obj.GetComponent<SpriteRenderer>().sprite = charList[i].inGameImg;
 				obj.GetComponent<InfoUpdate>().info = charList[i];
 
 				info.Add(obj);
@@ -66,6 +72,10 @@ public class ChracterSelection : MonoBehaviour {
 				firstSpawn = 0;
 			
 		}
+
+		GameObject b = GameObject.FindGameObjectWithTag("ChracterInfo");
+		if(b != null)
+			Destroy(b);
 
 		GameObject s = new GameObject();
 		s.AddComponent<InfoUpdate>();
@@ -126,7 +136,7 @@ public class ChracterSelection : MonoBehaviour {
 				continue;
 			}
 
-			info[i].GetComponent<SpriteGlow>().enabled = false;
+			//info[i].GetComponent<SpriteGlow>().enabled = false;
 
 			if(i == 0)
 			{
@@ -152,8 +162,9 @@ public class ChracterSelection : MonoBehaviour {
 			}
 		}
 		
-		foo.GetComponent<SpriteRenderer>().sortingOrder = 3;
-		foo.GetComponent<SpriteGlow>().enabled = true;
+		//foo.GetComponent<SpriteRenderer>().sortingOrder = 3;
+		//foo.GetComponent<SpriteGlow>().enabled = true;
+		foo.SetAsLastSibling();
 		return foo;
 	}
 
@@ -162,7 +173,7 @@ public class ChracterSelection : MonoBehaviour {
 		selected = GetNear();
 		if(selected == selsave)
 			return;
-		selected.GetComponent<InfoUpdate>().InfoLoad(name,exp);
+		selected.GetComponent<InfoUpdate>().InfoLoad(name,exp,cls);
 
 		charInfo.info.Copy(selected.GetComponent<InfoUpdate>().info);
 
@@ -171,6 +182,7 @@ public class ChracterSelection : MonoBehaviour {
 
 	void Update()
 	{
+		float size = Screen.width / 3.766f;
 		for(int i =0; i < info.Count; ++i)
 		{
 			float height = 0;
@@ -180,33 +192,41 @@ public class ChracterSelection : MonoBehaviour {
 			p2.y = 0;
 			height = Vector2.Distance(p1,p2);
 			Vector3 pos = info[i].localPosition;
-			float value = Mathf.Abs(height -  300);
-			if(height < 300)
+			float value = Mathf.Abs(height -  size);
+			if(height < size)
 			{
-				float c = 0.1f + (value / 300);
+				float c = 0.1f + (value / size);
 				if (c > 1)
 					c = 1;
 
-				pos.y = value / 5;
-				info[i].localScale = new Vector3(55 + value / 1000,55 + value / 1000,1);
-				info[i].GetComponent<SpriteRenderer>().color = new Color(c,c,c,1);
+				// if(value > 330)
+				// 	value = 330;
+
+				pos.y = value / (Screen.width / 224f);
+				//info[i].localScale = new Vector3(55 + value / 1000,55 + value / 1000,1);
+				info[i].localScale = new Vector3(1.3f + value / 4000,1.3f + value / 4000,1);
+				//info[i].GetComponent<SpriteRenderer>().color = new Color(c,c,c,1);
+				info[i].GetComponent<Image>().color = new Color(c,c,c,1);
 				if(info[i] != selected)
 				{
-					if(height < 200)
-						info[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
-					else
-						info[i].GetComponent<SpriteRenderer>().sortingOrder = 1;
+					//if(height < 200)
+						//info[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
+					//else
+						//info[i].GetComponent<SpriteRenderer>().sortingOrder = 1;
 	
 				}
 			}
 			else
 			{
 				pos.y = 0;
-				info[i].localScale = new Vector3(55,55,1);
-				if(info[i].GetComponent<SpriteRenderer>() == null)
-					Debug.Log("cehck");
-				info[i].GetComponent<SpriteRenderer>().color = new Color(0.1f,0.1f,0.1f,1);
-				info[i].GetComponent<SpriteRenderer>().sortingOrder = 0;
+				//info[i].localScale = new Vector3(55,55,1);
+				info[i].localScale = new Vector3(1.3f,1.3f,1);
+				//if(info[i].GetComponent<SpriteRenderer>() == null)
+				//	Debug.Log("cehck");
+				//info[i].GetComponent<SpriteRenderer>().color = new Color(0.1f,0.1f,0.1f,1);
+				info[i].GetComponent<Image>().color = new Color(0.1f,0.1f,0.1f,1);
+				info[i].SetAsFirstSibling();
+				//info[i].GetComponent<SpriteRenderer>().sortingOrder = 0;
 			}
 			info[i].localPosition = pos;
 		}

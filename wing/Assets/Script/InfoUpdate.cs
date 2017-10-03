@@ -7,7 +7,7 @@ public class InfoUpdate : MonoBehaviour {
 
 	public CharacterInfo info;
 
-	public void InfoLoad(Text n, Text e)
+	public void InfoLoad(Text n, Text e, Text c)
 	{
 		if(info.isLock)
 		{
@@ -18,6 +18,7 @@ public class InfoUpdate : MonoBehaviour {
 		{
 			n.text = info.name;
 			e.text = info.explanation;
+			c.text = info._class;
 		}
 	}
 

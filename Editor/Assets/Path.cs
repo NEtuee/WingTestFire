@@ -15,10 +15,12 @@ public class Path : MonoBehaviour {
     void Update()
     {
         t += 0.5f * Time.deltaTime;
-        move.transform.position = Curve(t,cur[0].transform.position, cur[1].transform.position, cur[2].transform.position, cur[3].transform.position);
-        //move.transform.position = Move(t, cur[0].transform.position, cur[3].transform.position);
-        if (t >= 1)
-            t = 0;
+       // move.transform.position = Curve(t,cur[0].transform.position, cur[1].transform.position, cur[2].transform.position, cur[3].transform.position);
+        move.transform.position = Vector2.Lerp(move.transform.position,cur[3].transform.position,Time.deltaTime * 5);
+        // if (t >= 1)
+        //     t = 0;
+        if(Vector2.Distance(move.transform.position,cur[3].transform.position) < 0.1f)
+            move.transform.position = cur[0].transform.position;
     }
 
     Vector2 Move(float t,Vector2 p0,Vector2 p1)

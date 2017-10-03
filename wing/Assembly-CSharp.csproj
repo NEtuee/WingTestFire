@@ -51,7 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MainMenuScript.cs" />
+     <Compile Include="Assets\circular.cs" />
+     <Compile Include="Assets\CoinScript.cs" />
+     <Compile Include="Assets\DataStructure.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -97,11 +99,13 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+     <Compile Include="Assets\RouletteMenu.cs" />
      <Compile Include="Assets\Script\AntiOnOff.cs" />
      <Compile Include="Assets\Script\AttackScript.cs" />
      <Compile Include="Assets\Script\BulletScript.cs" />
      <Compile Include="Assets\Script\CharacterInfo.cs" />
      <Compile Include="Assets\Script\ChracterSelection.cs" />
+     <Compile Include="Assets\Script\EnemyManager.cs" />
      <Compile Include="Assets\Script\EnemyScript.cs" />
      <Compile Include="Assets\Script\FpsCounter.cs" />
      <Compile Include="Assets\Script\GameManager.cs" />
@@ -110,6 +114,7 @@
      <Compile Include="Assets\Script\InfoUpdate.cs" />
      <Compile Include="Assets\Script\InputManager.cs" />
      <Compile Include="Assets\Script\LoadManager.cs" />
+     <Compile Include="Assets\Script\MainMenuScript.cs" />
      <Compile Include="Assets\Script\PlayerAttack.cs" />
      <Compile Include="Assets\Script\TestBox.cs" />
      <Compile Include="Assets\Script\TouchToMoveScene.cs" />
@@ -125,6 +130,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
+     <None Include="Assets\test.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />

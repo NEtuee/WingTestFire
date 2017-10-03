@@ -93,15 +93,15 @@ public class PlayerAttack : MonoBehaviour {
 
 		if(atk.attackCount == 0)
 		{
-			Debug.Log("Check");
 			atk.attackCount = attackCount;
+			GameManager.instance.player.GetComponent<Animator>().SetTrigger("Attack");
 			angle = new Vector2(attackAngle + (atkAngle / 2) > 360 ? (attackAngle + (atkAngle / 2)) - 360 : attackAngle + (atkAngle / 2)
 			 , attackAngle - (atkAngle / 2) < 0 ? (attackAngle - (atkAngle / 2)) + 360 : attackAngle - (atkAngle / 2));
 				angleCheck = true;
 		}
 
 		if(atk.safeMode)
-				trail.startColor = Color.white;
+			trail.startColor = Color.white;
 		else
 			trail.startColor = Color.red;
 

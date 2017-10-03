@@ -67,9 +67,20 @@ public class HpScript : MonoBehaviour {
 					{
 						GameManager.instance.enemyCount -= 1;
 						GameManager.instance.score += 100;
+
+						int rand = Random.Range(5,10);
+						GameObject coin = GameManager.instance.coinObj;
+						for(int i = 0; i < rand; ++i)
+						{
+							Instantiate(coin,transform.position,Quaternion.identity);
+						}
 					}
 					if(delete)
 						Destroy(gameObject);
+					else
+					{
+						GetComponent<Animator>().SetTrigger("Dead");
+					}
 				}
 
 				if(atk.deleteWhenCol)

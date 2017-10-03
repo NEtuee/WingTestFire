@@ -8,8 +8,6 @@ public class InputManager : MonoBehaviour {
 	public PlayerAttack attack;
 	public GameObject player;
 
-	public Text text;
-
 	public bool atkTouching = false;
 
 	public static InputManager instance;
@@ -33,7 +31,7 @@ public class InputManager : MonoBehaviour {
 		movementTouch.fingerId = -1;
 	}
 
-	void Update () {
+	public void Progress () {
 		if(Input.touchCount > 0 && !GameManager.instance.player.isDead)
 		{
 			for(int i = 0; i < Input.touchCount; ++i)
@@ -62,14 +60,12 @@ public class InputManager : MonoBehaviour {
 					if(touchs.fingerId == atkTouch.fingerId)
 					{
 						Vector3 pos = Camera.main.ScreenToWorldPoint(touchs.position);
-						text.text = atkTouch.position.ToString();
 				 		pos.z = 0;
 				 		attack.transform.position = pos;
 					}
 					else if(touchs.fingerId == movementTouch.fingerId)
 					{
 						Vector2 pos = new Vector2(playerOrigin.x,playerOrigin.y - (touchOrigin.y - Camera.main.ScreenToWorldPoint(touchs.position).y));
-						text.text = atkTouch.position.ToString();
 				 		player.transform.position = pos;
 					}
 					break;
